@@ -1,0 +1,29 @@
+# Dependency directories
+/node_modules
+
+# Environment variables
+/.env
+
+# Uploaded files (if applicable)
+/uploads
+
+# OS generated files
+.DS_Store
+
+# Logs
+*.log
+
+# Editor specific files
+.vscode/
+.idea/
+
+# npm debugging files
+npm-debug.log*
+
+# Yarn logs
+yarn-debug.log*
+yarn-error.log*
+
+# IDE settings
+/.vscode/
+.idea/
