@@ -9,6 +9,18 @@ const submitCarValidationRules = [
     .isLength({ min: 11, max: 11 })
     .withMessage("Phone number must be exactly 11 digits long"),
   check("city").notEmpty().withMessage("City is required"),
+  check("images")
+    .isArray()
+    .withMessage("Tags must be an array")
+    .custom((value) => {
+      if (value.length === 0) {
+        throw new Error("Tags array should not be empty");
+      }
+      if (value.length > 10) {
+        throw new Error("Tags array should have less than 10 images");
+      }
+      return true;
+    }),
 ];
 
 const validate = (req, res, next) => {

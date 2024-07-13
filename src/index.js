@@ -15,26 +15,15 @@ const port = process.env.PORT || 5000;
 connectDB();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 
+app.get("/", (_, res) => {
+  res.send("Welcome to my Node.js app!");
+});
 app.use("/api/login", authRoutes);
 app.use("/api/cars", carRoutes);
-
-// Manually add the user
-const addUser = async () => {
-  const existingUser = await User.findOne({ email: "Amjad@desolint.com" });
-  if (!existingUser) {
-    const hashedPassword = await bcrypt.hash("123456abc", 10);
-    const user = new User({
-      email: "Amjad@desolint.com",
-      password: hashedPassword,
-    });
-    await user.save();
-  }
-};
-addUser();
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);

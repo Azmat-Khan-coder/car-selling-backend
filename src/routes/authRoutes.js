@@ -3,7 +3,7 @@ const { login } = require("../services/authService.js");
 const {
   loginValidationRules,
   validate,
-} = require("../validators/authValidator");
+} = require("../validators/authValidator.js");
 const router = express.Router();
 
 router.post("/", loginValidationRules, validate, login);

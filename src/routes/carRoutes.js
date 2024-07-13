@@ -4,7 +4,7 @@ const { authenticate } = require("../middleware/authMiddleware.js");
 const {
   submitCarValidationRules,
   validate,
-} = require("../validators/carValidator");
+} = require("../validators/carValidator.js");
 const router = express.Router();
 
 router.post("/", authenticate, submitCarValidationRules, validate, submitCar);
